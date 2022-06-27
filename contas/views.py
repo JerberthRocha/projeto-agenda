@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import render
-from django.contrib import messages
+# from django.contrib import messages
 
 # Create your views here.
 def entrar(request):
