@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants # IMPORT PARA AS MENSAGENS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,3 +128,12 @@ STATICFILES_DIRS = [
 ]
 MEDIA_ROOT = BASE_DIR / 'media/'
 MEDIA_URL = 'media/'
+
+# MENSAGENS 
+MESSAGE_TAG = {
+    constants.ERROR: 'alert-danger',
+    constants.WARNING: 'alert-warning',
+    constants.DEBUG: 'alert-info',
+    constants.SUCCESS: 'alert-sucess',
+    constants.INFO: 'alert-info',
+}

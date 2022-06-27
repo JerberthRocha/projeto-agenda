@@ -26,8 +26,9 @@
               <input class="form-control"
                     type="search" value="{{ request.GET.termo }}"
                     id="search-input"
-                    placeholder="Digite sua pesquisa"
-                    name="termo">
+                    placeholder="Faça sua pesquisa aqui"
+                    name="termo"> 
+                  {% include 'parciais/_messages.html'%}
             </div>
           </div>
         </form>
