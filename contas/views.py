@@ -4,6 +4,7 @@ from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .models import FormularioContato
 
 # Create your views here.
 def entrar(request):
@@ -75,5 +76,24 @@ def cadastro(request):
 
 @login_required(login_url='entrar')
 def dashboard(request):
-    return render(request, 'contas/dashboard.html')
+    if request.method != 'POST':
+        formulario = FormularioContato()
+        return render(request, 'contas/dashboard.html', {'formulario': formulario})
+    
+    formulario = FormularioContato(request.POST, request.FILES) 
 
+    if not formulario.is_valid():
+        messages.error(request, 'Erro ao enviar formulário.')
+        formulario = FormularioContato(request.POST)
+        return render(request, 'contas/dashboard.html', {'formulario': formulario})
+    
+    descricao = request.POST.get('descricao')
+
+    if len(descricao) < 5:
+        messages.error(request, 'O campo descrição precisa ter mais que 5 caracteres')
+        formulario = FormularioContato(request.POST)
+        return render(request, 'contas/dashboard.html', {'formulario': formulario})
+
+    formulario.save()
+    messages.success(request, f'Contato {request.POST.get("nome")} salvo com sucesso!')
+    return redirect('dashboard')
