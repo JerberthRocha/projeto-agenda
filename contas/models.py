@@ -2,9 +2,9 @@ from django.db import models
 from contatos.models import Contato
 from django import forms
 
-class FormularioContato(forms.ModelForm):
+class FormContato(forms.ModelForm):
     class Meta:
         model = Contato
-        exclude = ()
+        exclude = ('mostrar', 'data_criacao')
 
 
