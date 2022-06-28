@@ -1,15 +1,30 @@
 import re
 from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def entrar(request):
-    return render(request, 'contas/entrar.html')
+    if request.method != 'POST':
+        return render(request, 'contas/entrar.html')
+
+    usuario = request.POST.get('usuario')
+    senha = request.POST.get('senha')
+
+    user = auth.authenticate(request, username=usuario, password=senha)
+
+    if not user:
+        messages.error(request, 'Usuário ou senha inválidos.')
+        return render(request, 'contas/entrar.html')
+    else:
+        auth.login(request, user)
+        return redirect('dashboard')
 
 def sair(request):
-    return render(request, 'contas/sair.html')
+    auth.logout(request)
+    return redirect('index')
 
 def cadastro(request):
     if request.method != 'POST':
@@ -54,10 +69,11 @@ def cadastro(request):
                                     last_name=sobrenome)
     user.save()
 
-    messages.success(request, 'Registrado com sucesso!')
+    messages.success(request, 'Cadastrado com sucesso!')
 
     return redirect('entrar')
 
+@login_required(login_url='entrar')
 def dashboard(request):
     return render(request, 'contas/dashboard.html')
 

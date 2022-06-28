@@ -1,6 +1,21 @@
 {%  extends 'base.html' %}
 
 {% block conteudo %}
-    Entrar
-    {% include 'parciais/_messages.html' %}
+
+<h1 class="mt-3 mb-3">Entrar</h1>
+
+<form method="POST" action="{% url 'entrar' %}">
+        {% include 'parciais/_messages.html'%}
+        {% csrf_token %}
+    <div class="form-group">
+      <label>Usuário</label>
+      <input type="text" class="form-control" name="usuario" value="{{ request.POST.usuario }}">
+    </div>
+    <div class="form-group">
+      <label>Senha</label>
+      <input type="password" class="form-control" name="senha">
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
+
 {% endblock %}
