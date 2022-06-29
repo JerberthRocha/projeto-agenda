@@ -1,0 +1,101 @@
+/*
+ALTERAR: #191970 -> Cor do topo
+ALTERAR: C0C0C0 -> Cor dos links e cabeçalhos
+*/
+
+#branding h1,
+#branding h1 a,
+#branding h1 a:link,
+#branding h1 a:visited {
+    color: #FFFFFF;
+}
+
+#header {
+    background: #191970;
+    color: #FFFFFF;
+}
+
+#user-tools a:focus, #user-tools a:hover {
+    border-bottom-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+a:link, a:visited {
+    color: #FFFFFF;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: #000000;
+    color: #000000;
+}
+
+div.breadcrumbs {
+    background: #1b1b81;
+    color: #ffffff;
+}
+
+.paginator a:link, .paginator a:visited {
+    background: #C0C0C0 !important;
+    color: #FFFFFF;
+}
+
+.paginator a:hover {
+    background: #191970 !important;
+    color: #FFFFFF;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: #028f02;
+}
+
+.button.default:active,
+input[type=submit].default:active,
+.button.default:focus,
+input[type=submit].default:focus,
+.button.default:hover,
+input[type=submit].default:hover {
+    background: #191970;
+}
+
+.object-tools a:focus, .object-tools a:hover {
+    background-color: #C0C0C0;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #191970;
+    color: #FFFFFF;
+}
+.button:active,
+input[type=submit]:active,
+input[type=button]:active,
+.button:focus,
+input[type=submit]:focus,
+input[type=button]:focus,
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover {
+    background-color: #028f02;
+}
+
+#changelist-filter li.selected a {
+    color: #C0C0C0 !important;
+}
+
+#changelist-filter a:focus,
+#changelist-filter a:hover,
+#changelist-filter li.selected a:focus,
+#changelist-filter li.selected a:hover {
+    color: #191970 !important;
+}
+
+.selector-chosen h2 {
+    background: #C0C0C0 !important;
+    color: #FFFFFF;
+}
+
+a.active.selector-chooseall:focus,
+a.active.selector-clearall:focus,
+a.active.selector-chooseall:hover,
+a.active.selector-clearall:hover {
+    color: #C0C0C0 !important;
+}
